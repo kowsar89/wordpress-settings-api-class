@@ -46,8 +46,17 @@ class WeDevs_Settings_API_Test {
                 'title' => __( 'Other Settings', 'wpuf' )
             )
         );
+
+        // sanitize section before save - remove if no sanitization needed
+        add_filter('sanitize_option_wedevs_basics', array($this, 'sanitize_section_wedevs_basics'), 12);
+
         return $sections;
     }
+
+    public function sanitize_section_wedevs_basics($options){
+        // do whatever you want for sanitization here
+        return $options;
+    }    
 
     /**
      * Returns all the settings fields
@@ -63,7 +72,8 @@ class WeDevs_Settings_API_Test {
                     'desc'              => __( 'Text input description', 'wedevs' ),
                     'type'              => 'text',
                     'default'           => 'Title',
-                    'sanitize_callback' => 'intval'
+                    'sanitize_callback' => 'intval',
+                    'placeholder'    => __( 'This is placeholder text', 'wedevs' ),
                 ),
                 array(
                     'name'              => 'number_input',
