@@ -475,7 +475,7 @@ class WeDevs_Settings_API {
      */
     function show_forms() {
         ?>
-        <div class="metabox-holder">
+        <div class="">
 			<?php foreach ( $this->settings_sections as $form ) { ?>
 				<div id="<?php echo $form['id']; ?>" class="group" style="display: none;">
 					<form method="post" action="options.php">
