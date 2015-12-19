@@ -8,7 +8,8 @@
  * Version: 1.1
  */
 
-require_once dirname( __FILE__ ) . '/src/class.settings-api.php';
-require_once dirname( __FILE__ ) . '/example/oop-example.php';
-
-new WeDevs_Settings_API_Test();
+if ( is_admin() ):
+	require_once dirname( __FILE__ ) . '/src/class.settings-api.php';
+	require_once dirname( __FILE__ ) . '/example/oop-example.php';
+	WeDevs_Settings_API_Test::instance();
+endif;

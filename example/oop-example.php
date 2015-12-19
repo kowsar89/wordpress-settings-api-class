@@ -8,6 +8,7 @@
 if ( !class_exists('WeDevs_Settings_API_Test' ) ):
 class WeDevs_Settings_API_Test {
 
+    private static $instance = null;
     private $settings_api;
 
     function __construct() {
@@ -15,6 +16,13 @@ class WeDevs_Settings_API_Test {
 
         add_action( 'admin_init', array($this, 'admin_init') );
         add_action( 'admin_menu', array($this, 'admin_menu') );
+    }
+
+    public static function instance() {
+        if ( null == self::$instance ) {
+            self::$instance = new self;
+        }
+        return self::$instance;
     }
 
     function admin_init() {
